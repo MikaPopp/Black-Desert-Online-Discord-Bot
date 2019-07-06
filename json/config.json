@@ -1,0 +1,10 @@
+{ "settings":
+    {
+        "token" : "token here",
+        "prefix" : "preferred prefix",
+        "guild_id" : guild id here,
+        "selfrole_channel_name" : "selfrole channel name here",
+        "boss_announcements_channel_name" : "boss announcements channel here",
+        "chrome_path" : "chrome driver path here"
+    }
+}
