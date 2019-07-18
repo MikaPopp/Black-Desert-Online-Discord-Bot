@@ -9,6 +9,7 @@ from selenium.webdriver.common.by import By
 
 config = json.loads(open("json/config.json").read())
 
+region = config["settings"]["region"]
 boss_name_list = ["Karanda", "Kzarka", "Offin", "Kutum", "Nouver", "Garmoth", "Quint", "Muraka", "Vell"]
 
 chrome_path = config["settings"]["chrome_path"]
@@ -18,7 +19,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument("--mute-audio")
 driver = webdriver.Chrome(chrome_path, options = chrome_options)
-url = "https://bdobosstimer.com/?&server="+config["settings"]["region"]
+url = "https://bdobosstimer.com/?&server="+region
 
 driver.get(url)
 

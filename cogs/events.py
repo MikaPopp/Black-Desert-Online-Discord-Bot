@@ -15,7 +15,8 @@ config = json.loads(open("json/config.json").read())
 guild_id = config["settings"]["guild_id"]
 selfrole_channel_name = config["settings"]["selfrole_channel_name"]
 boss_announcements_channel_name = config["settings"]["boss_announcements_channel_name"]
-cest_time_channel_id = config["settings"]["cest_time_channel_id"]
+time_channel_id = config["settings"]["time_channel_id"]
+region = config["settings"]["region"]
 emoji_list = ["🐦", "🐗", "🌳", "🐛", "🐉", "🐲", "👺", "👹", "🐳"]
 role_name_list = ["Karanda", "Kzarka", "Offin", "Kutum", "Nouver", "Garmoth", "Quint", "Muraka", "Vell"]
 
@@ -26,7 +27,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument("--mute-audio")
 driver = webdriver.Chrome(chrome_path, options = chrome_options)
-url = "https://bdobosstimer.com/?&server="+config["settings"]["region"]
+url = "https://bdobosstimer.com/?&server="+region
 
 driver.get(url)
 
@@ -64,11 +65,57 @@ class bot_events(commands.Cog):
 
     @tasks.loop(seconds = 60)
     async def set_cest_channel_name(self):
-        tz = pytz.timezone('Europe/Berlin')
-        berlin_now = datetime.now(tz).strftime("%A, %H:%M (CEST)")
-        guild = self.chamcham.get_guild(guild_id)
-        cest_channel = discord.utils.get(self.chamcham.get_all_channels(), id=cest_time_channel_id)
-        await cest_channel.edit(name=berlin_now)
+        time_channel = discord.utils.get(self.chamcham.get_all_channels(), id=time_channel_id)
+        if region == "eu":
+            tz = pytz.timezone("Europe/Berlin")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (CEST)")
+            await time_channel.edit(name=time_now)
+        elif region == "jp":
+            tz = pytz.timezone("Japan")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (JST)")
+            await time_channel.edit(name=time_now)
+        elif region == "kr":
+            tz = pytz.timezone("Asia/Seoul")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (KST)")
+            await time_channel.edit(name=time_now)
+        elif region == "mena":
+            tz = pytz.timezone("Turkey")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (TRT)")
+            await time_channel.edit(name=time_now)
+        elif region == "na":
+            tz = pytz.timezone("US/Pacific")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (PDT)")
+            await time_channel.edit(name=time_now)
+        elif region == "ru":
+            tz = pytz.timezone("Europe/Moscow")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (MSK)")
+            await time_channel.edit(name=time_now)
+        elif region == "sa":
+            tz = pytz.timezone("Canada/Atlantic")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (BRT)")
+            await time_channel.edit(name=time_now)
+        elif region == "sea":
+            tz = pytz.timezone("Hongkong")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (WITA)")
+            await time_channel.edit(name=time_now)
+        elif region == "th":
+            tz = pytz.timezone("Asia/Vientiane")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (ICT)")
+            await time_channel.edit(name=time_now)
+        elif region == "tw":
+            tz = pytz.timezone("CST6CDT")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (CST)")
+            await time_channel.edit(name=time_now)
+        elif region == "xbox-na":
+            tz = pytz.timezone("US/Pacific")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (PDT)")
+            await time_channel.edit(name=time_now)
+        elif region == "xbox-eu":
+            tz = pytz.timezone("Europe/London")
+            time_now = datetime.now(tz).strftime("%A, %H:%M (UTC+1)")
+            await time_channel.edit(name=time_now)
+        else: 
+            tz = pytz.timezone("Europe/Berlin")
 
     @tasks.loop(seconds = 60)
     async def check_boss_time(self):

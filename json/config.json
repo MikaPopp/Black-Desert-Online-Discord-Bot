@@ -1,12 +1,12 @@
 { "settings":
     {
-        "token" : "token here",
+        "token" : "your bot token here",
         "prefix" : "preferred prefix here",
         "guild_id" : guild id here,
         "selfrole_channel_name" : "selfrole channel name here",
-        "boss_announcements_channel_name" : "boss-announcements channel name here",
-        "cest_time_channel_id" : cest time channel here,
-        "chrome_path" : "chromedriver path here",
-        "region" : "your region here"
+        "boss_announcements_channel_name" : "boss announcements channel name here",
+        "time_channel_id" : time channel id here,
+        "chrome_path" : "/path/to/the/file/chromedriver",
+        "region" : "eu/jp/kr/mena/na/ru/sa/sea/th/tw/xbox-na/xbox-eu"
     }
 }
