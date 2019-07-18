@@ -7,12 +7,15 @@ import asyncio
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
+import pytz
+from datetime import datetime
 
 config = json.loads(open("json/config.json").read())
 
 guild_id = config["settings"]["guild_id"]
 selfrole_channel_name = config["settings"]["selfrole_channel_name"]
 boss_announcements_channel_name = config["settings"]["boss_announcements_channel_name"]
+cest_time_channel_id = config["settings"]["cest_time_channel_id"]
 emoji_list = ["🐦", "🐗", "🌳", "🐛", "🐉", "🐲", "👺", "👹", "🐳"]
 role_name_list = ["Karanda", "Kzarka", "Offin", "Kutum", "Nouver", "Garmoth", "Quint", "Muraka", "Vell"]
 
@@ -23,7 +26,7 @@ chrome_options.add_argument('--no-sandbox')
 chrome_options.add_argument('--disable-dev-shm-usage')
 chrome_options.add_argument("--mute-audio")
 driver = webdriver.Chrome(chrome_path, options = chrome_options)
-url = "https://bdobosstimer.com/?&server=eu"
+url = "https://bdobosstimer.com/?&server="+config["settings"]["region"]
 
 driver.get(url)
 
@@ -35,8 +38,10 @@ class bot_events(commands.Cog):
     @commands.Cog.listener()
     async def on_ready(self):
         print("Cham Cham is ready!")
-        await self.chamcham.change_presence(status = discord.Status.do_not_disturb, activity=discord.Game(name = "White Wetland Offline"))
+        await self.chamcham.change_presence(status = discord.Status.do_not_disturb)
+        await self.chamcham.change_presence(activity=discord.Game(name = "test"))
         self.check_boss_time.start()
+        self.set_cest_channel_name.start()
         embed = discord.Embed (
             colour = discord.Colour.green()
         )
@@ -58,6 +63,14 @@ class bot_events(commands.Cog):
             await react_message.add_reaction(emoji)
 
     @tasks.loop(seconds = 60)
+    async def set_cest_channel_name(self):
+        tz = pytz.timezone('Europe/Berlin')
+        berlin_now = datetime.now(tz).strftime("%A, %H:%M (CEST)")
+        guild = self.chamcham.get_guild(guild_id)
+        cest_channel = discord.utils.get(self.chamcham.get_all_channels(), id=cest_time_channel_id)
+        await cest_channel.edit(name=berlin_now)
+
+    @tasks.loop(seconds = 60)
     async def check_boss_time(self):
         embed = discord.Embed (
             colour = discord.Colour.green()
@@ -65,6 +78,16 @@ class bot_events(commands.Cog):
         embed.set_footer(text="Cham Cham - Version: 1.0")
         boss_announcements_channel = discord.utils.get(self.chamcham.get_all_channels(), name="boss-announcements")
         i = 0
+        if "01:00:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "10:00:00":
+            time = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text
+            time_minute = int(time[3]+time[4])
+            time_minute_in_h = int(time_minute*100/60)
+            await self.chamcham.change_presence(activity=discord.Game(name = "Boss in: "+time[1]+"."+str(time_minute_in_h)+"h"))
+        elif "00:01:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:59:59":
+            time = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text
+            await self.chamcham.change_presence(activity=discord.Game(name = "Boss in: "+time[3]+time[4]+"mins"))
+        elif WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:00:59":
+            await self.chamcham.change_presence(activity=discord.Game(name = "Boss in: now/dead"))
         try:
             guild = self.chamcham.get_guild(guild_id)
             if "00:15:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:16:00":
@@ -93,7 +116,7 @@ class bot_events(commands.Cog):
                     embed.description = "Prepare yourself and your buffs, boss will spawn in 5 minutes"
                     await boss_announcements_channel.send(embed=embed)
                     i = 0    
-            elif "00:00:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:01:00":
+            elif WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:01:00":
                 for x in role_name_list:
                     if WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text == x:
                         await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention} & {discord.utils.get(guild.roles, name = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text).mention}""")
