@@ -18,14 +18,14 @@ Since this bot is open source you can use it how you want, just make sure to not
 ### Built-in:
 
 **Events:** | **Description:**
-- | -
+----------- | ----------------
 Selfrole: | Choose for which boss you want to get notifications
 World boss announcements: | Notifies you 15, 5 and 1 minute before a boss spawns
 Bot status time: | The bot status shows the time left for the next boss
 Channel name to CEST: | Sets the name of a channel to the CEST 
 
 **Commands¹:** | **Description:**
-- | -
+-------------- | ----------------
 next: | Returns the next boss that will spawn
 timetable²: | shows you the whole spawn timetable
 
@@ -35,7 +35,7 @@ timetable²: | shows you the whole spawn timetable
 ### Planned:
 
 **Commands:** | **Description:**
-- | -
+------------- | ----------------
 timetable (update): | Print out the timetable to the acording region
 help: | Add a custom help command
 express: | Express installation command; create channel and set permissions
