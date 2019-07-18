@@ -56,6 +56,6 @@ If there is anything you want to be added to the bot, just hit me up or advanced
 Well there is not much left to say, except thank you for using it or just checking it out, the bot was tested on several different operating systems such as:
 * Windows 10
 * MacOS Mojave 10.14.5
-* Ubuntu Server 18.042 LTS
+* Ubuntu Server 18.04.2 LTS
 
 If there are any questions or you need help, feel free to contact me. 
