@@ -27,10 +27,11 @@ Channel name to timezone: | Sets the name of a channel to the region timezone
 **Commands¹:** | **Description:**
 -------------- | ----------------
 next: | Returns the next boss that will spawn
-timetable²: | shows you the spawn table for your region
+timetable: | shows you the spawn table for your region
+marketgain²: | calculate the silver gain; with or without Valuepack 
 
 ¹ : The prefix is defined in the config fil, see more at the Setup section   
-
+² : syntax: marketgain [amount of silvers] [y/yes or n/no]
 ### Planned:
 
 **Commands:** | **Description:**
@@ -38,6 +39,7 @@ timetable²: | shows you the spawn table for your region
 help: | Add a custom help command
 express: | Express installation command; create channel and set permissions
 loot: | Shows you the loot table for the chosen boss
+market: | Search for items on the marketplace
 
 If there is anything you want to be added to the bot, just hit me up or advanced users can fork it and maybe created it, so i can just implement it.
 
