@@ -137,17 +137,43 @@ class bot_events(commands.Cog):
             await self.chamcham.change_presence(activity=discord.Game(name = "Boss in: now/dead"))
         try:
             guild = self.chamcham.get_guild(guild_id)
-            if "00:15:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:16:00":
+            if "00:45:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:46:00":
                 for x in role_name_list:
                     if WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text == x:
                         await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention} & {discord.utils.get(guild.roles, name = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text).mention}""")
-                        embed.description = "Settle your horses, bosses will spawn in 15 minutes"
+                        embed.description = "Get some food ready, bosses will spawn in 45 minutes"
                         await boss_announcements_channel.send(embed=embed)
                     else:
                         i += 1
                 if i == 9:
                     await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention}""")
-                    embed.description = "Settle your horses, boss will spawn in 15 minutes"
+                    embed.description = "Get some food ready, boss will spawn in 45 minutes"
+                    await boss_announcements_channel.send(embed=embed)
+                    i = 0
+            elif "00:30:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:31:00":
+                for x in role_name_list:
+                    if WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text == x:
+                        await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention} & {discord.utils.get(guild.roles, name = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text).mention}""")
+                        embed.description = "Settle your horses, bosses will spawn in 30 minutes"
+                        await boss_announcements_channel.send(embed=embed)
+                    else:
+                        i += 1
+                if i == 9:
+                    await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention}""")
+                    embed.description = "Settle your horses, bosses will spawn in 30 minutes"
+                    await boss_announcements_channel.send(embed=embed)
+                    i = 0
+            elif "00:15:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:16:00":
+                for x in role_name_list:
+                    if WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text == x:
+                        await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention} & {discord.utils.get(guild.roles, name = WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname1"))).text).mention}""")
+                        embed.description = "Start your campfire, bosses will spawn in 15 minutes"
+                        await boss_announcements_channel.send(embed=embed)
+                    else:
+                        i += 1
+                if i == 9:
+                    await boss_announcements_channel.send(f"""{discord.utils.get(guild.roles, name=WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "bossname0"))).text).mention}""")
+                    embed.description = "Start your campfire, boss will spawn in 15 minutes"
                     await boss_announcements_channel.send(embed=embed)
                     i = 0
             elif "00:05:00" <= WebDriverWait(driver, 10).until(ec.presence_of_element_located((By.ID, "timer"))).text <= "00:06:00":
