@@ -45,10 +45,10 @@ If there is anything you want to be added to the bot, just hit me up or advanced
 
 ## 3. Setup
 
-1. Clone this repository [**repository**](https://github.com/MikaPopp/BDO_Boss_Timer_Discord)
+1. Clone this [**repository**](https://github.com/MikaPopp/BDO_Boss_Timer_Discord)
 2. install **Google Chrome/Chromium** and download the corresponding [**ChromeDriver**](http://chromedriver.chromium.org/)
 3. Install following Dependencies:
-	1. [**Discord.py**](https://pypi.org/project/discord.py/)
+	1. [**discord.py**](https://pypi.org/project/discord.py/)
 	2. [**selenium**](https://pypi.org/project/selenium/)
 	3. [**pytz**](https://pypi.org/project/pytz/)
 4. Edit the **config.json** file in the **json** folder
