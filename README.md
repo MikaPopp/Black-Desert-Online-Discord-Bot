@@ -20,7 +20,7 @@ Since this bot is open source you can use it how you want, just make sure to not
 **Events:** | **Description:**
 ----------- | ----------------
 Selfrole: | Choose for which boss you want to get notifications
-World boss announcements: | Notifies you 15, 5 and 1 minute before a boss spawns
+World boss announcements: | Notifies you 45, 30, 15, 5 and 1 minute before a boss spawns
 Bot status time: | The bot status shows the time left for the next boss
 Channel name to timezone: | Sets the name of a channel to the region timezone 
 
