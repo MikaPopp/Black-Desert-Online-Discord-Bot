@@ -32,7 +32,9 @@ marketgain²: | calculate the silver gain; with or without Valuepack
 upgrade³: | calculate the upgrade chance
 
 ¹ : The prefix is defined in the config fil, see more at the Setup section   
-² : syntax: marketgain [amount of silvers] [y/yes or n/no]                                                                              ³ : syntax: upgrade [type of gear] [base] [failstacks]
+² : syntax: marketgain [amount of silvers] [y/yes or n/no]
+
+³ : syntax: upgrade [type of gear] [base] [failstacks]
 
 ### Planned:
 
