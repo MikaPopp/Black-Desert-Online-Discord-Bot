@@ -29,9 +29,11 @@ Channel name to timezone: | Sets the name of a channel to the region timezone
 next: | Returns the next boss that will spawn
 timetable: | shows you the spawn table for your region
 marketgain²: | calculate the silver gain; with or without Valuepack 
+upgrade³: | calculate the upgrade chance
 
 ¹ : The prefix is defined in the config fil, see more at the Setup section   
 ² : syntax: marketgain [amount of silvers] [y/yes or n/no]
+³ : syntax: upgrade [type of gear] [base] [failstacks]
 ### Planned:
 
 **Commands:** | **Description:**
