@@ -29,11 +29,11 @@ Channel name to timezone: | Sets the name of a channel to the region timezone
 next: | Returns the next boss that will spawn
 timetable: | shows you the spawn table for your region
 marketgain²: | calculate the silver gain; with or without Valuepack                                                                     
-upgrade³: | calculate the upgrade chance
+upgrade³: | calculate the upgrade chance & simulates an upgrade
 
 ¹ : The prefix is defined in the config fil, see more at the Setup section   
 ² : syntax: marketgain [amount of silvers] [y/yes or n/no]  
-³ : syntax: upgrade [type of gear] [base] [failstacks]
+³ : syntax: upgrade [type of gear] [base] [failstacks] [optional: tries]
 
 ### Planned:
 
@@ -54,6 +54,7 @@ If there is anything you want to be added to the bot, just hit me up or advanced
 	1. [**discord.py**](https://pypi.org/project/discord.py/)
 	2. [**selenium**](https://pypi.org/project/selenium/)
 	3. [**pytz**](https://pypi.org/project/pytz/)
+	4. [**numpy**](https://pypi.org/project/numpy/)
 4. Edit the **config.json** file in the **json** folder
 5. Have fun with the bot
 
