@@ -1,4 +1,4 @@
-# Black Desert Online Boss Timer Bot - Discord
+# Black Desert Online Discord Bot
 ![Image of Yaktocat](https://b.catgirlsare.sexy/FuOZ.png)
 
 ## Table of Contents:
