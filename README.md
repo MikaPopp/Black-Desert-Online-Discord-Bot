@@ -1,5 +1,5 @@
 # Black Desert Online Discord Bot
-![Image of Yaktocat](https://b.catgirlsare.sexy/FuOZ.png)
+![Image Header](https://b.catgirlsare.sexy/FuOZ.png)
 
 ## Table of Contents:
 1. About
@@ -48,7 +48,7 @@ If there is anything you want to be added to the bot, just hit me up or advanced
 
 ## 3. Setup
 
-1. Clone this [**repository**](https://github.com/MikaPopp/BDO_Boss_Timer_Discord)
+1. Clone this [**repository**](https://github.com/MikaPopp/Black-Desert-Online-Discord-Bot)
 2. install **Google Chrome/Chromium** and download the corresponding [**ChromeDriver**](http://chromedriver.chromium.org/)
 3. Install following Dependencies:
 	1. [**discord.py**](https://pypi.org/project/discord.py/)
